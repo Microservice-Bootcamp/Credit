@@ -20,4 +20,14 @@ public class CreditService {
     public Flux<Credit> findAllCredit(){
         return creditRepository.findAll();
     }
+
+    public Mono<Credit> updateCredit(Credit credit){
+        return creditRepository.existsByIdCredit(credit.getIdCredit())
+                .flatMap(condition->{
+                    if(condition.equals(true)){
+                        return creditRepository.save(credit);
+                    }
+                    return Mono.empty();
+                });
+    }
 }

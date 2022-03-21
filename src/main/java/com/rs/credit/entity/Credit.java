@@ -13,7 +13,7 @@ public class Credit {
     @Id
     private String idCredit;
 
-    private String idUser;
+    private Integer dniUser;
     private Integer accountNumber;
     private Integer balance;
     private Integer creditLimit;

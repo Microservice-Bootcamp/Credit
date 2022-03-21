@@ -33,4 +33,8 @@ public class CreditController {
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
+    @GetMapping("/status/{dniNumber}")
+    public Mono<Boolean> existUserWithCredit(@PathVariable("dniNumber") Integer dniNumber){
+        return creditService.existUserWithCredit(dniNumber);
+    }
 }

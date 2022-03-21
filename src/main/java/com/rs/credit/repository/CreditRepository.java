@@ -6,5 +6,6 @@ import reactor.core.publisher.Mono;
 
 public interface CreditRepository  extends ReactiveMongoRepository<Credit, String> {
     Mono<Boolean> existsByIdCredit(String id);
+    Mono<Boolean> existsByDniUser(Integer dniNumber);
 
 }

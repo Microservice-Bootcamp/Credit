@@ -37,4 +37,9 @@ public class CreditController {
     public Mono<Boolean> existUserWithCredit(@PathVariable("dniNumber") Integer dniNumber){
         return creditService.existUserWithCredit(dniNumber);
     }
+
+    @GetMapping("/{account}")
+    public Mono<Credit> creditByAccountNumber(@PathVariable("account")Integer accountNumber){
+        return creditService.getAccountByAccountNumber(accountNumber);
+    }
 }

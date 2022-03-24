@@ -52,4 +52,8 @@ public class CreditService {
     }
 
     Predicate<String> typeCredit = type-> type.equals("personal") || type.equals("business") || type.equals("creditCard");
+
+    public Mono<Credit> getAccountByAccountNumber (Integer accountNumber){
+        return creditRepository.findByAccountNumber(accountNumber);
+    }
 }

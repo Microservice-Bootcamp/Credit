@@ -23,7 +23,13 @@ public class CreditService {
     public Mono<Credit> saveCredit(Credit credit){
         return userIsRegistered(credit.getDniUser())
                 .filter(condition->condition.getStatus().equals(true) && typeCredit.test(credit.getTypeCredit()))
-                .flatMap(value-> creditRepository.save(credit));
+                .flatMap(value-> getAccountByAccountNumber(credit.getAccountNumber()))
+                .flatMap(credit1 -> {
+                    if (credit1.getDebt() == 0 && credit1.getDebt() !=null){
+                        return creditRepository.save(credit);
+                    }
+                    return Mono.empty();
+                });
     }
 
     public Flux<Credit> findAllCredit(){

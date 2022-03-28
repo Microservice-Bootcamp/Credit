@@ -7,5 +7,5 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: https://config-server-eureka.herokuapp.com
+      uri: https://config-server-master.azurewebsites.net:443
       #uri: http://localhost:8090
